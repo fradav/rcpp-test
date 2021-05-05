@@ -66,7 +66,7 @@ if(R_COMMAND)
   endif()
 
   execute_process(WORKING_DIRECTORY .
-                  COMMAND ${R_COMMAND} "-s -e 'message(system.file(\"include\", package = \"Rcpp\"))'"
+                  COMMAND ${R_COMMAND} -s -e "message(system.file(\"include\", package = \"Rcpp\"))"
                   OUTPUT_VARIABLE Rcpp_INCLUDE_DIR
                   OUTPUT_STRIP_TRAILING_WHITESPACE)
 
