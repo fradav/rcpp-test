@@ -66,14 +66,14 @@ if(R_COMMAND)
   endif()
 
   execute_process(WORKING_DIRECTORY .
-                  COMMAND ${R_COMMAND} -s -e "message(system.file(\"include\", package = \"Rcpp\"))"
-                  OUTPUT_VARIABLE Rcpp_INCLUDE_DIR
+                  COMMAND ${R_COMMAND} -s -e "cat(system.file(\"include\", package = \"Rcpp\"))"
+                  OUTPUT_VARIABLE RCPP_HINT 
                   OUTPUT_STRIP_TRAILING_WHITESPACE)
-
+   message("RCPP_HINT : ${RCPP_HINT}")
 #  file(GLOB_RECURSE RCPP_HINT "${R_HOME}/*/Rcpp.h")
 #  string(REGEX REPLACE "/Rcpp.h$" "" RCPP_HINT "${RCPP_HINT}")
 
-#  find_path(Rcpp_INCLUDE_DIR "Rcpp.h" HINTS "${RCPP_HINT}")
+  find_path(Rcpp_INCLUDE_DIR "Rcpp.h" HINTS "${RCPP_HINT}")
 
   find_library(R_LIBRARY_BASE R
             HINTS ${R_ROOT_DIR}/lib ${R_ROOT_DIR}/bin/${R_LIB_ARCH}
