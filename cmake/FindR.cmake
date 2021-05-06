@@ -66,7 +66,7 @@ if(R_COMMAND)
   endif()
 
   execute_process(WORKING_DIRECTORY .
-                  COMMAND ${R_COMMAND} -s -e "cat(system.file(\"include\", package = \"Rcpp\"))"
+                  COMMAND ${R_COMMAND} -q -s -e "cat(system.file(\"include\", package = \"Rcpp\"))"
                   OUTPUT_VARIABLE RCPP_HINT 
                   OUTPUT_STRIP_TRAILING_WHITESPACE)
    message("RCPP_HINT : ${RCPP_HINT}")
